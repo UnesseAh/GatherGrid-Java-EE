@@ -1,4 +1,4 @@
-package com.example.gathergrid;
+package com.gathergrid.servlet;
 
 import java.io.*;
 import javax.servlet.http.*;
