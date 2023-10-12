@@ -1,7 +1,16 @@
 package com.gathergrid.domain;
 
-import javax.persistence.*;
-import javax.validation.constraints.*;
+import com.gathergrid.domain.enums.TicketType;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import java.util.Objects;
 
 @Entity
 public class Ticket {
@@ -10,22 +19,24 @@ public class Ticket {
     private Long id;
     @NotNull
     @Digits(integer = 5, fraction = 2)
-    private Float price;
+    private Double price;
     @NotNull
     @Min(value = 0)
     private Integer quantity;
-    @ManyToOne
     @NotNull
-    private TicketCategory ticketCategory;
+    private TicketType ticketType;
+    @ManyToOne
+    private Event event;
 
     public Ticket() {
     }
 
-    public Ticket(Long id, Float price, Integer quantity, TicketCategory ticketCategory) {
+    public Ticket(Long id, Double price, Integer quantity, TicketType ticketType, Event event) {
         this.id = id;
         this.price = price;
         this.quantity = quantity;
-        this.ticketCategory = ticketCategory;
+        this.ticketType = ticketType;
+        this.event = event;
     }
 
     public Long getId() {
@@ -36,11 +47,11 @@ public class Ticket {
         this.id = id;
     }
 
-    public Float getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(Float price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
@@ -52,11 +63,43 @@ public class Ticket {
         this.quantity = quantity;
     }
 
-    public TicketCategory getTicketCategory() {
-        return ticketCategory;
+    public TicketType getTicketType() {
+        return ticketType;
     }
 
-    public void setTicketType(TicketCategory ticketCategory) {
-        this.ticketCategory = ticketCategory;
+    public void setTicketType(TicketType ticketType) {
+        this.ticketType = ticketType;
+    }
+
+    public Event getEvent() {
+        return event;
+    }
+
+    public void setEvent(Event event) {
+        this.event = event;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Ticket ticket = (Ticket) o;
+        return Objects.equals(price, ticket.price) && Objects.equals(quantity, ticket.quantity) && ticketType == ticket.ticketType && Objects.equals(event, ticket.event);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(price, quantity, ticketType, event);
+    }
+
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                "id=" + id +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                ", ticketType=" + ticketType +
+                ", event=" + event +
+                '}';
     }
 }

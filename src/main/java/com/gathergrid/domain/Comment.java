@@ -1,7 +1,16 @@
 package com.gathergrid.domain;
 
-import javax.persistence.*;
-import javax.validation.constraints.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Max;
+
+import java.util.*;
 
 @Entity
 public class Comment {
@@ -70,5 +79,21 @@ public class Comment {
         this.event = event;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Comment comment = (Comment) o;
+        return Objects.equals(assessment, comment.assessment) && Objects.equals(text, comment.text) && Objects.equals(user, comment.user) && Objects.equals(event, comment.event);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(assessment, text, user, event);
+    }
+
+    @Override
+    public String toString() {
+        return "Comment{" + "id=" + id + ", assessment=" + assessment + ", text='" + text + '\'' + ", user=" + user + ", event=" + event + '}';
+    }
 }
