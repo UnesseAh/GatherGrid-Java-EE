@@ -1,10 +1,6 @@
 package com.gathergrid.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.ManyToOne;
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Objects;
 

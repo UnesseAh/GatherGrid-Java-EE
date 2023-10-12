@@ -2,14 +2,7 @@ package com.gathergrid.domain;
 
 import com.gathergrid.domain.enums.TicketType;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.ManyToOne;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
+import jakarta.persistence.*;
 import java.util.Objects;
 
 @Entity
@@ -17,13 +10,11 @@ public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @NotNull
-    @Digits(integer = 5, fraction = 2)
+
     private Double price;
-    @NotNull
-    @Min(value = 0)
+
     private Integer quantity;
-    @NotNull
+
     private TicketType ticketType;
     @ManyToOne
     private Event event;

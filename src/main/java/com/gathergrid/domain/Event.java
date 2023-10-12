@@ -1,14 +1,7 @@
 package com.gathergrid.domain;
 
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.ManyToOne;
-import javax.validation.constraints.Future;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import jakarta.persistence.*;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.Objects;
@@ -18,18 +11,17 @@ public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @NotBlank
+
     private String name;
-    @Future
-    @NotNull
+
+
     private Date date;
-    @NotNull
+
     private Time hour;
-    @NotBlank
+
     private String location;
-    @NotBlank
+
     private String description;
-    @NotNull
     @ManyToOne
     private Category category;
 

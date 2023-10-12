@@ -1,14 +1,6 @@
 package com.gathergrid.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.Max;
+import jakarta.persistence.*;
 
 import java.util.*;
 
@@ -17,11 +9,8 @@ public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @NotNull
-    @Min(value = 1)
-    @Max(value = 5)
     private Integer assessment;
-    @NotBlank
+
     private String text;
     @ManyToOne
     private User user;

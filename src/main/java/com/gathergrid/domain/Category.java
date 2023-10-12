@@ -1,11 +1,6 @@
 package com.gathergrid.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import jakarta.persistence.*;
 import java.util.Objects;
 
 @Entity
@@ -13,11 +8,7 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @NotBlank
-    @Size(max = 100)
     private String name;
-    @NotBlank
-    @Size(max = 500)
     private String description;
 
     public Category() {
