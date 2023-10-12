@@ -1,12 +1,6 @@
 package com.gathergrid.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import jakarta.persistence.*;
 import java.util.Objects;
 
 @Entity
@@ -14,17 +8,14 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @NotBlank
+
     private String username;
-    @NotBlank
-    @Size(min = 8)
+
     private String password;
-    @NotBlank
+
     private String firstName;
-    @NotBlank
+
     private String lastName;
-    @NotBlank
-    @Email
     private String email;
 
     public User() {
