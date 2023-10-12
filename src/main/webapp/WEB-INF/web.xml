@@ -5,10 +5,10 @@
          version="4.0">
     <servlet>
         <servlet-name>MyFirstServlet</servlet-name>
-        <servlet-class>com.gathergrid.servlet.MyFirstServlet</servlet-class>
+        <servlet-class>com.gathergrid.controller.MyFirstServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>MyFirstServlet</servlet-name>
-        <url-pattern>/wow</url-pattern>
+        <url-pattern>/hello-servlet</url-pattern>
     </servlet-mapping>
 </web-app>

@@ -1,6 +1,5 @@
 package com.gathergrid.domain;
 
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
